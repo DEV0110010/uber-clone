@@ -1,4 +1,3 @@
-Here’s your API documentation with a more structured and aesthetically pleasing format. I’ve improved readability, added clear sectioning, and ensured uniformity in headings and content.
 
 ---
 

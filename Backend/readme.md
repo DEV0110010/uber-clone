@@ -132,7 +132,7 @@ Requires a valid JWT token in the Authorization header or token cookie.
   Returns an error if the token is missing or invalid.
 
 
-# /captain/register
+# /captains/register
 
 **Method:** `POST`
 

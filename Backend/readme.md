@@ -1,12 +1,17 @@
-# API Endpoints
+Here’s your API documentation with a more structured and aesthetically pleasing format. I’ve improved readability, added clear sectioning, and ensured uniformity in headings and content.
 
-## /users/register
-**Method:** `POST`  
+---
 
-### Description
-Creates a new user record and returns a JWT token.
+# 🚀 **API Documentation**
 
-### Required Fields
+## 📌 **Users Endpoints**
+
+### 🔹 **Register a User**
+- **Endpoint:** `/users/register`
+- **Method:** `POST`
+- **Description:** Creates a new user account and returns a JWT token.
+
+#### 📥 **Request Body**
 ```json
 {
   "fullname": {
@@ -18,11 +23,8 @@ Creates a new user record and returns a JWT token.
 }
 ```
 
-### Responses
-#### 201 Created  
-Returns a `token` and the newly created `user`.
-
-**Example of a Successful Response**:
+#### 📤 **Responses**
+✅ **201 Created**
 ```json
 {
   "token": "sample-jwt-token",
@@ -36,19 +38,16 @@ Returns a `token` and the newly created `user`.
   }
 }
 ```
-
-#### 400 Bad Request  
-Returns validation errors if any field is invalid or missing.
+❌ **400 Bad Request** - Invalid or missing fields.
 
 ---
 
-## /users/login
-**Method:** `POST`
+### 🔹 **User Login**
+- **Endpoint:** `/users/login`
+- **Method:** `POST`
+- **Description:** Authenticates a user and returns a JWT token.
 
-### Description
-Logs in an existing user and returns a JWT token.
-
-### Required Fields
+#### 📥 **Request Body**
 ```json
 {
   "email": "must be a valid email",
@@ -56,8 +55,8 @@ Logs in an existing user and returns a JWT token.
 }
 ```
 
-### Responses
-#### 200 OK
+#### 📤 **Responses**
+✅ **200 OK**
 ```json
 {
   "token": "sample-jwt-token",
@@ -71,26 +70,18 @@ Logs in an existing user and returns a JWT token.
   }
 }
 ```
-
-#### 400 Bad Request  
-Returns validation errors if any field is invalid or missing.
-
-#### 401 Unauthorized  
-Returns an error if email or password is incorrect.
+❌ **400 Bad Request** - Invalid or missing fields.  
+❌ **401 Unauthorized** - Incorrect email or password.
 
 ---
 
-## /users/profile
-**Method:** `GET`
+### 🔹 **Get User Profile**
+- **Endpoint:** `/users/profile`
+- **Method:** `GET`
+- **Authorization:** Requires a valid JWT token.
 
-### Description
-Fetches the profile data of the currently authenticated user.
-
-### Authorization
-Requires a valid JWT token in the Authorization header or token cookie.
-
-### Responses
-#### 200 OK
+#### 📤 **Responses**
+✅ **200 OK**
 ```json
 {
   "_id": "sample-user-id",
@@ -101,41 +92,34 @@ Requires a valid JWT token in the Authorization header or token cookie.
   "email": "john.doe@example.com"
 }
 ```
-
-#### 401 Unauthorized  
-Returns an error if the token is missing or invalid.
+❌ **401 Unauthorized** - Missing or invalid token.
 
 ---
 
-## /users/logout
-**Method:** `GET`
+### 🔹 **User Logout**
+- **Endpoint:** `/users/logout`
+- **Method:** `GET`
+- **Authorization:** Requires a valid JWT token.
 
-### Description
-Logs out the currently authenticated user by clearing the token and adding it to a blacklist.
-
-### Authorization
-Requires a valid JWT token in the Authorization header or token cookie.
-
-### Responses
-#### 200 OK
+#### 📤 **Responses**
+✅ **200 OK**
 ```json
 {
   "message": "Logged Out"
 }
 ```
-
-#### 401 Unauthorized  
-Returns an error if the token is missing or invalid.
+❌ **401 Unauthorized** - Missing or invalid token.
 
 ---
 
-## /captains/register
-**Method:** `POST`
+## 🚖 **Captains Endpoints**
 
-### Description
-Creates a new captain record and returns a JWT token.
+### 🔹 **Register a Captain**
+- **Endpoint:** `/captains/register`
+- **Method:** `POST`
+- **Description:** Creates a new captain account and returns a JWT token.
 
-### Required Fields
+#### 📥 **Request Body**
 ```json
 {
   "fullname": {
@@ -153,11 +137,8 @@ Creates a new captain record and returns a JWT token.
 }
 ```
 
-### Responses
-#### 201 Created  
-Returns a JWT `token` and the newly created `captain`.
-
-**Example of a Successful Response**:
+#### 📤 **Responses**
+✅ **201 Created**
 ```json
 {
   "token": "sample-jwt-token",
@@ -177,19 +158,16 @@ Returns a JWT `token` and the newly created `captain`.
   }
 }
 ```
-
-#### 400 Bad Request  
-Returns validation errors if any field is invalid, missing, or if the captain already exists.
+❌ **400 Bad Request** - Invalid or missing fields.
 
 ---
 
-## /captains/login
-**Method:** `POST`
+### 🔹 **Captain Login**
+- **Endpoint:** `/captains/login`
+- **Method:** `POST`
+- **Description:** Authenticates a captain and returns a JWT token.
 
-### Description
-Logs in an existing captain and returns a JWT token.
-
-### Required Fields
+#### 📥 **Request Body**
 ```json
 {
   "email": "must be a valid email",
@@ -197,16 +175,8 @@ Logs in an existing captain and returns a JWT token.
 }
 ```
 
-**Example of a Successful Request**:
-```json
-{
-  "email": "jane.doe@example.com",
-  "password": "your-password"
-}
-```
-
-### Responses
-#### 200 OK
+#### 📤 **Responses**
+✅ **200 OK**
 ```json
 {
   "token": "sample-jwt-token",
@@ -226,27 +196,18 @@ Logs in an existing captain and returns a JWT token.
   }
 }
 ```
-
-#### 400 Bad Request  
-Returns validation errors if any field is invalid or missing.
-
-#### 401 Unauthorized  
-Returns an error if email or password is incorrect.
+❌ **400 Bad Request** - Invalid or missing fields.  
+❌ **401 Unauthorized** - Incorrect email or password.
 
 ---
 
-## /captains/profile
-**Method:** `GET`
+### 🔹 **Get Captain Profile**
+- **Endpoint:** `/captains/profile`
+- **Method:** `GET`
+- **Authorization:** Requires a valid JWT token.
 
-### Description
-Fetches the profile data of the currently authenticated captain.
-
-### Authorization
-Requires a valid JWT token in the Authorization header or token cookie.
-
-### Responses
-#### 200 OK  
-Returns the captain's profile.
+#### 📤 **Responses**
+✅ **200 OK**
 ```json
 {
   "captain": {
@@ -265,35 +226,27 @@ Returns the captain's profile.
   }
 }
 ```
-
-#### 400 Bad Request  
-Returned if the request is malformed or missing some required parameter.
-
-#### 401 Unauthorized  
-Returned if the token is missing, invalid, or expired.
+❌ **400 Bad Request** - Malformed request.  
+❌ **401 Unauthorized** - Missing or invalid token.
 
 ---
 
-## /captains/logout
-**Method:** `GET`
+### 🔹 **Captain Logout**
+- **Endpoint:** `/captains/logout`
+- **Method:** `GET`
+- **Authorization:** Requires a valid JWT token.
 
-### Description
-Logs out the currently authenticated captain by clearing the token and adding it to a blacklist.
-
-### Authorization
-Requires a valid JWT token in the Authorization header or token cookie.
-
-### Responses
-#### 200 OK  
+#### 📤 **Responses**
+✅ **200 OK**
 ```json
 {
   "message": "Logged Out"
 }
 ```
+❌ **400 Bad Request** - Malformed request.  
+❌ **401 Unauthorized** - Missing or invalid token.
 
-#### 400 Bad Request  
-Returned if the request is malformed or missing some required parameter.
+---
 
-#### 401 Unauthorized  
-Returned if the token is missing, invalid, or expired.
+
 

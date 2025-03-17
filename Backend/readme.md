@@ -130,3 +130,57 @@ Requires a valid JWT token in the Authorization header or token cookie.
 
 - **401 Unauthorized**
   Returns an error if the token is missing or invalid.
+
+
+# /captain/register
+
+**Method:** `POST`
+
+## Description
+Creates a new captain record and returns a JWT token.
+
+## Required Fields
+```json
+{
+  "fullname": {
+    "firstname": "min. 3 chars",
+    "lastname": "optional, min. 3 chars"
+  },
+  "email": "must be a valid email",
+  "password": "min. 6 chars",
+  "vehicle": {
+    "color": "min. 3 chars",
+    "plate": "min. 3 chars",
+    "capacity": "must be at least 1",
+    "vehicleType": "car | motorcycle | auto"
+  }
+}
+```
+
+## Responses
+- **201 Created**  
+  Returns a JWT `token` and the newly created `captain`.
+
+**Example of a Successful Response**:
+```json
+{
+  "token": "sample-jwt-token",
+  "captain": {
+    "_id": "sample-captain-id",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehicle": {
+      "color": "Blue",
+      "plate": "ABC123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+- **400 Bad Request**  
+  Returns validation errors if any field is invalid, missing, or if the captain already exists.
